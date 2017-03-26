@@ -293,106 +293,6 @@ if (argc > 3) {
         return -1;
     }
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//if we would like to calibrate our filter values, set to true.
-	bool calibrationMode = true;
-
-	//Matrix to store each frame of the webcam feed
-	Mat cameraFeed;
-	Mat threshold;
-	Mat HSV;
-
-	if(calibrationMode){
-		//create slider bars for HSV filtering
-		createTrackbars();
-	}
-	//video capture object to acquire webcam feed
-	VideoCapture capture;
-	//open capture object at location zero (default location for webcam)
-	capture.open(2);
-	//set height and width of capture frame
-	capture.set(CV_CAP_PROP_FRAME_WIDTH,FRAME_WIDTH);
-	capture.set(CV_CAP_PROP_FRAME_HEIGHT,FRAME_HEIGHT);
-	//start an infinite loop where webcam feed is copied to cameraFeed matrix
-	//all of our operations will be performed within this loop
-	waitKey(1000);
-	while(1){
-		//store image to matrix
-		capture.read(cameraFeed);
-
-		src = cameraFeed;
-
-  		if( !src.data )
-  		{ return -1; }
-
-		//convert frame from BGR to HSV colorspace
-		cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
-
-		if(calibrationMode==true){
-
-		//need to find the appropriate color range values
-		// calibrationMode must be false
-
-		//if in calibration mode, we track objects based on the HSV slider values.
-			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
-			inRange(HSV,Scalar(H_MIN,S_MIN,V_MIN),Scalar(H_MAX,S_MAX,V_MAX),threshold);
-			morphOps(threshold);
-			imshow(windowName2,threshold);
-
-		//the folowing for canny edge detec
-			/// Create a matrix of the same type and size as src (for dst)
-	  		dst.create( src.size(), src.type() );
-	  		/// Convert the image to grayscale
-	  		cvtColor( src, src_gray, CV_BGR2GRAY );
-	  		/// Create a window
-	  		namedWindow( window_name, CV_WINDOW_AUTOSIZE );
-	  		/// Create a Trackbar for user to enter threshold
-	  		createTrackbar( "Min Threshold:", window_name, &lowThreshold, max_lowThreshold);
-	  		/// Show the image
-			trackFilteredObject(threshold,HSV,cameraFeed);
-		}
-		else{
-			//create some temp fruit objects so that
-			//we can use their member functions/information
-			Object blue("blue"), yellow("yellow"), red("red"), green("green");
-
-			//first find blue objects
-			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
-			inRange(HSV,blue.getHSVmin(),blue.getHSVmax(),threshold);
-			morphOps(threshold);
-			trackFilteredObject(blue,threshold,HSV,cameraFeed);
-			//then yellows
-			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
-			inRange(HSV,yellow.getHSVmin(),yellow.getHSVmax(),threshold);
-			morphOps(threshold);
-			trackFilteredObject(yellow,threshold,HSV,cameraFeed);
-			//then reds
-			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
-			inRange(HSV,red.getHSVmin(),red.getHSVmax(),threshold);
-			morphOps(threshold);
-			trackFilteredObject(red,threshold,HSV,cameraFeed);
-			//then greens
-			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
-			inRange(HSV,green.getHSVmin(),green.getHSVmax(),threshold);
-			morphOps(threshold);
-			trackFilteredObject(green,threshold,HSV,cameraFeed);
-
-		}
-		//show frames
-		//imshow(windowName2,threshold);
-
-		imshow(windowName,cameraFeed);
-		//imshow(windowName1,HSV);
-
-		//delay 30ms so that screen can refresh.
-		//image will not appear without this waitKey() command
-		waitKey(30);
-	}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
     // Quick check input arguments - REMOVED
 
 
@@ -478,7 +378,31 @@ if (argc > 3) {
 
     sl::zed::ZED_SELF_CALIBRATION_STATUS old_self_calibration_status = sl::zed::SELF_CALIBRATION_NOT_CALLED;
 
-    // Loop until 'q' is pressed
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	//if we would like to calibrate our filter values, set to true.
+	bool calibrationMode = true;
+
+	//Matrix to store each frame of the webcam feed
+	Mat cameraFeed;
+	Mat threshold;
+	Mat HSV;
+
+	if(calibrationMode){
+		//create slider bars for HSV filtering
+		createTrackbars();
+	}
+	//video capture object to acquire webcam feed
+	//open capture object at location zero (default location for webcam)
+	//set height and width of capture frame
+	//start an infinite loop where webcam feed is copied to cameraFeed matrix
+	//all of our operations will be performed within this loop
+	//----REMOVED CV::CAPTURE AND JUST USED THE ZED GETVIEW FUNCTION USED EARLIER
+	waitKey(1000);
+	
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+    // Loop until 'q' is pressed  ----- COMBINED BOTH CV AND ZED LOOPS INTO ONE
     while (key != 'q') {
         // Disparity Map filtering
         zed->setConfidenceThreshold(confidenceThres);
@@ -575,7 +499,84 @@ if (argc > 3) {
                     break;
             }
         } else key = cv::waitKey(5);
-    }
+ 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+		//store image to matrix  -- CHANGED TO MAKE THE ZED GETVIEW AND CONVERT TO CV::MAT THEN COPY INTO CAMERAFEED
+		slMat2cvMat(zed->getView_gpu(static_cast<sl::zed::VIEW_MODE> (viewID - (int) sl::zed::LAST_SIDE))).copyTo(cameraFeed);
+
+		src = cameraFeed;
+
+  		if( !src.data )
+  		{ return -1; }
+
+		//convert frame from BGR to HSV colorspace
+		cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
+
+		if(calibrationMode==true){
+
+		//need to find the appropriate color range values
+		// calibrationMode must be false
+
+		//if in calibration mode, we track objects based on the HSV slider values.
+			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
+			inRange(HSV,Scalar(H_MIN,S_MIN,V_MIN),Scalar(H_MAX,S_MAX,V_MAX),threshold);
+			morphOps(threshold);
+			imshow(windowName2,threshold);
+
+		//the folowing for canny edge detec
+			/// Create a matrix of the same type and size as src (for dst)
+	  		dst.create( src.size(), src.type() );
+	  		/// Convert the image to grayscale
+	  		cvtColor( src, src_gray, CV_BGR2GRAY );
+	  		/// Create a window
+	  		namedWindow( window_name, CV_WINDOW_AUTOSIZE );
+	  		/// Create a Trackbar for user to enter threshold
+	  		createTrackbar( "Min Threshold:", window_name, &lowThreshold, max_lowThreshold);
+	  		/// Show the image
+			trackFilteredObject(threshold,HSV,cameraFeed);
+		}
+		else{
+			//create some temp fruit objects so that
+			//we can use their member functions/information
+			Object blue("blue"), yellow("yellow"), red("red"), green("green");
+
+			//first find blue objects
+			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
+			inRange(HSV,blue.getHSVmin(),blue.getHSVmax(),threshold);
+			morphOps(threshold);
+			trackFilteredObject(blue,threshold,HSV,cameraFeed);
+			//then yellows
+			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
+			inRange(HSV,yellow.getHSVmin(),yellow.getHSVmax(),threshold);
+			morphOps(threshold);
+			trackFilteredObject(yellow,threshold,HSV,cameraFeed);
+			//then reds
+			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
+			inRange(HSV,red.getHSVmin(),red.getHSVmax(),threshold);
+			morphOps(threshold);
+			trackFilteredObject(red,threshold,HSV,cameraFeed);
+			//then greens
+			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
+			inRange(HSV,green.getHSVmin(),green.getHSVmax(),threshold);
+			morphOps(threshold);
+			trackFilteredObject(green,threshold,HSV,cameraFeed);
+
+		}
+		//show frames
+		//imshow(windowName2,threshold);
+
+		imshow(windowName,cameraFeed);
+		//imshow(windowName1,HSV);
+
+		//delay 30ms so that screen can refresh.
+		//image will not appear without this waitKey() command
+		waitKey(30);
+	}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     delete zed;
     return 0;
