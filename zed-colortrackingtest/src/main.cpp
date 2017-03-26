@@ -393,40 +393,22 @@ if (argc > 3) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Quick check input arguments
-    bool readSVO = false;
-    std::string SVOName;
-    bool loadParams = false;
-    std::string ParamsName;
-    if (argc > 1) {
-        std::string _arg;
-        for (int i = 1; i < argc; i++) {
-            _arg = argv[i];
-            if (_arg.find(".svo") != std::string::npos) {
-                // If a SVO is given we save its name
-                readSVO = true;
-                SVOName = _arg;
-            }
-            if (_arg.find(".ZEDinitParam") != std::string::npos) {
-                // If a parameter file is given we save its name
-                loadParams = true;
-                ParamsName = _arg;
-            }
-        }
-    }
+    // Quick check input arguments - REMOVED
+
 
     sl::zed::Camera* zed;
 
-    if (!readSVO) // Live Mode
+// Live Mode
         zed = new sl::zed::Camera(sl::zed::HD720);
-    else // SVO playback mode
-        zed = new sl::zed::Camera(SVOName);
+
+		
+	// SVO playback mode - REMOVED
 
     // Define a struct of parameters for the initialization
     sl::zed::InitParams params;
 
-    if (loadParams) // A parameters file was given in argument, we load it
-        params.load(ParamsName);
+ // If A parameters file was given in argument, we load it - REMOVED
+  
 
     // Enables verbosity in the console
     params.verbose = true;
@@ -441,8 +423,7 @@ if (argc > 3) {
     }
 
     // Save the initialization parameters
-    // The file can be used later in any zed based application
-    params.save("MyParam");
+    // The file can be used later in any zed based application - REMOVED
 
     char key = ' ';
     int viewID = 0;
@@ -469,7 +450,8 @@ if (argc > 3) {
     sl::zed::Mat depth;
     zed->grab(dm_type);
     depth = zed->retrieveMeasure(sl::zed::MEASURE::DEPTH); // Get the pointer
-    // Set the structure
+    
+	// Set the structure
     mouseStruct._image = cv::Size(width, height);
     mouseStruct._resize = displaySize;
     mouseStruct.data = (float*) depth.data;
@@ -517,35 +499,42 @@ if (argc > 3) {
             // Disparity, depth, confidence are 32F buffer by default and 8UC4 buffer in normalized format (displayable grayscale)
 
 
-            // -- The next part is about displaying the data --
+            // -- The next part is about displaying the data --------------------------------------DISPLAY
 
             // Normalize the disparity / depth map in order to use the full color range of gray level image
-            if (displayDisp)
-                slMat2cvMat(zed->normalizeMeasure(sl::zed::MEASURE::DISPARITY)).copyTo(disp);
+			//ADDED _GPU TO ALL RETRIEVES, MAKES IT USE THE GPU BUFFER? IF IT DOES NOT MAKE IT FASTER, 
+			//JUST REMOVE ALL INSTANCES OF _GPU
+            
+			if (displayDisp)
+                slMat2cvMat(zed->normalizeMeasure_gpu(sl::zed::MEASURE::DISPARITY)).copyTo(disp);
             else
-                slMat2cvMat(zed->normalizeMeasure(sl::zed::MEASURE::DEPTH)).copyTo(disp);
+                slMat2cvMat(zed->normalizeMeasure_gpu(sl::zed::MEASURE::DEPTH)).copyTo(disp);
 
             // To get the depth at a given position, click on the disparity / depth map image
             cv::resize(disp, dispDisplay, displaySize);
             imshow(mouseStruct.name, dispDisplay);
 
             if (displayConfidenceMap) {
-                slMat2cvMat(zed->normalizeMeasure(sl::zed::MEASURE::CONFIDENCE)).copyTo(confidencemap);
+                slMat2cvMat(zed->normalizeMeasure_gpu(sl::zed::MEASURE::CONFIDENCE)).copyTo(confidencemap);
                 cv::resize(confidencemap, confidencemapDisplay, displaySize);
                 imshow("confidence", confidencemapDisplay);
             }
 
-            // 'viewID' can be 'SIDE mode' or 'VIEW mode'
-            if (viewID >= sl::zed::LEFT && viewID < sl::zed::LAST_SIDE)
-                slMat2cvMat(zed->retrieveImage(static_cast<sl::zed::SIDE> (viewID))).copyTo(anaglyph);
-            else
-                slMat2cvMat(zed->getView(static_cast<sl::zed::VIEW_MODE> (viewID - (int) sl::zed::LAST_SIDE))).copyTo(anaglyph);
-
-            cv::resize(anaglyph, anaglyphDisplay, displaySize);
-            imshow("VIEW", anaglyphDisplay);
+			 // 'viewID' can be 'SIDE mode' or 'VIEW mode' - THIS DECIDES WHICH TYPE OF REGULAR VIEW TO USE 
+			 //BASED ON CASE STATEMENTS BELOW , CALLS THE WINDOW AS ANAGLYPH BUT MAY NOT BE
+-            
+			if (viewID >= sl::zed::LEFT && viewID < sl::zed::LAST_SIDE)
+-               //Not sure difference between retrieveImage and getView 
+				slMat2cvMat(zed->retrieveImage_gpu(static_cast<sl::zed::SIDE> (viewID))).copyTo(anaglyph);
+-            else
+				//Zed->getView gets the image, copies to anaglyph matrix then converts matrix to cv::Mat to be used in imshow
+-                slMat2cvMat(zed->getView_gpu(static_cast<sl::zed::VIEW_MODE> (viewID - (int) sl::zed::LAST_SIDE))).copyTo(anaglyph);
+-
+-            cv::resize(anaglyph, anaglyphDisplay, displaySize);
+-            imshow("VIEW", anaglyphDisplay);
 
             key = cv::waitKey(5);
-
+//--------------------------------------------------------------------------------------------------DISPLAY
             // Keyboard shortcuts
             switch (key) {
                 case 'b':
@@ -570,18 +559,10 @@ if (argc > 3) {
                     viewID = 10;
                     std::cout << "Current View switched to Side by Side mode" << std::endl;
                     break;
-                case '3': // Overlay
-                    viewID = 11;
-                    std::cout << "Current View switched to Overlay mode" << std::endl;
-                    break;
-                case '4': // Difference
-                    viewID = 9;
-                    std::cout << "Current View switched to Difference mode" << std::endl;
-                    break;
-                case '5': // Anaglyph
-                    viewID = 8;
-                    std::cout << "Current View switched to Anaglyph mode" << std::endl;
-                    break;
+					// Overlay -REMOVED
+                    // Difference -REMOVED
+                    // Anaglyph -REMOVED
+            
                 case 'c':
                     displayConfidenceMap = !displayConfidenceMap;
                     break;
