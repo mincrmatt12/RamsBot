@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Stereolabs ZED - OpenCV
 
 This sample shows how to interface the ZED SDK and OpenCV to acquire and display ZED stereo images and depth map.
@@ -63,16 +64,16 @@ This table lists keyboard shortcuts that you can use in the sample application.
 
 Parameter             | Description                   |   Hotkey
 ---------------------|------------------------------------|-------------------------------------------------
- Left image view      | Display left rectified RGB image.                      |         '0'                             
-Right image view      | Display right rectified RGB image.                        |          '1'                              
+ Left image view      | Display left rectified RGB image.                      |         '0'
+Right image view      | Display right rectified RGB image.                        |          '1'
 Side by Side view        | Display the left and right images side by side.  |'2'
 Overlay view         | Display overlay view.        |      '3'
-Difference view         | Display difference view. |           '4'         
-Anaglyph view         | Display anaglyph view. |            '5'                 
-Depth view         | Toggle between disparity / depth map display.           |           'd'                                                      
+Difference view         | Display difference view. |           '4'
+Anaglyph view         | Display anaglyph view. |            '5'
+Depth view         | Toggle between disparity / depth map display.           |           'd'
 Confidence view         | Display depth map confidence. The confidence value is mapped between 0 (high confidence threshold, sparse data) and 100 (low confidence threshold, dense data).       | 'c'
-Confidence threshold        | Increase/Decrease depth map confidence threshold.    |       'b'/'n'     
-Sensing mode         | Toggle between `STANDARD` sensing mode (faster, should be used by most applications) / `FILL` (fully dense and filtered depth map).     |             's'                                                    
+Confidence threshold        | Increase/Decrease depth map confidence threshold.    |       'b'/'n'
+Sensing mode         | Toggle between `STANDARD` sensing mode (faster, should be used by most applications) / `FILL` (fully dense and filtered depth map).     |             's'
 Exit         | Quit the application.             | 'q'
 
 
@@ -80,3 +81,6 @@ Exit         | Quit the application.             | 'q'
 
  - For simplicity's sake, this sample uses GPU->CPU data transfer to retrieve and display the images with OpenCV.
  - For optimal performance, we recommend using a direct device to device copy of the ZED SDK GPU buffer to OpenGL buffer, rather than using the CPU as an intermediate.
+=======
+# RamsBot
+>>>>>>> Zed_Clean_Up

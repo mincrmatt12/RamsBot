@@ -293,94 +293,10 @@ if (argc > 3) {
         return -1;
     }
 
-    // Quick check input arguments - REMOVED
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    sl::zed::Camera* zed;
-
-// Live Mode
-        zed = new sl::zed::Camera(sl::zed::HD720);
-
-		
-	// SVO playback mode - REMOVED
-
-    // Define a struct of parameters for the initialization
-    sl::zed::InitParams params;
-
- // If A parameters file was given in argument, we load it - REMOVED
-  
-
-    // Enables verbosity in the console
-    params.verbose = true;
-
-
-    sl::zed::ERRCODE err = zed->init(params);
-    std::cout << "Error code : " << sl::zed::errcode2str(err) << std::endl;
-    if (err != sl::zed::SUCCESS) {
-        // Exit if an error occurred
-        delete zed;
-        return 1;
-    }
-
-    // Save the initialization parameters
-    // The file can be used later in any zed based application - REMOVED
-
-    char key = ' ';
-    int viewID = 0;
-    int confidenceThres = 100;
-
-    bool displayDisp = true;
-    bool displayConfidenceMap = false;
-
-    int width = zed->getImageSize().width; // Gets width and height of the feed
-    int height = zed->getImageSize().height;
-
-    cv::Mat disp(height, width, CV_8UC4); // Display can have width,height and a 4 channel matrix matrix of colours ( from 0-255)
-    cv::Mat anaglyph(height, width, CV_8UC4);
-    cv::Mat confidencemap(height, width, CV_8UC4);
-
-    cv::Size displaySize(720, 404);
-    cv::Mat dispDisplay(displaySize, CV_8UC4);
-    cv::Mat anaglyphDisplay(displaySize, CV_8UC4);
-    cv::Mat confidencemapDisplay(displaySize, CV_8UC4);
-
-    sl::zed::SENSING_MODE dm_type = sl::zed::STANDARD;
-
-    // Mouse callback initialization
-    sl::zed::Mat depth;
-    zed->grab(dm_type);
-    depth = zed->retrieveMeasure(sl::zed::MEASURE::DEPTH); // Get the pointer
-    
-	// Set the structure
-    mouseStruct._image = cv::Size(width, height);
-    mouseStruct._resize = displaySize;
-    mouseStruct.data = (float*) depth.data;
-    mouseStruct.step = depth.step;
-    mouseStruct.name = "DEPTH";
-    mouseStruct.unit = unit2str(params.unit);
-
-    // The depth is limited to 20 METERS, as defined in zed::init()
-    zed->setDepthClampValue(10000);
-
-    // Create OpenCV Windows
-    // NOTE: You may encounter an issue with OpenGL support, to solve it either
-    // 	use the default rendering by removing ' | cv::WINDOW_OPENGL' from the flags
-    //	or recompile OpenCV with OpenGL support (you may also need the gtk OpenGL Extension
-    //	on Linux, provided by the packages libgtkglext1 libgtkglext1-dev)
-    cv::namedWindow(mouseStruct.name, cv::WINDOW_AUTOSIZE );
-    cv::setMouseCallback(mouseStruct.name, onMouseCallback, (void*) &mouseStruct);
-    cv::namedWindow("VIEW", cv::WINDOW_AUTOSIZE );
-
-    std::cout << "Press 'q' to exit" << std::endl;
-
-    // Jetson only. Execute the calling thread on core 2
-    sl::zed::Camera::sticktoCPUCore(2);
-
-    sl::zed::ZED_SELF_CALIBRATION_STATUS old_self_calibration_status = sl::zed::SELF_CALIBRATION_NOT_CALLED;
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	//if we would like to calibrate our filter values, set to true.
+//if we would like to calibrate our filter values, set to true.
 	bool calibrationMode = true;
 
 	//Matrix to store each frame of the webcam feed
@@ -393,117 +309,18 @@ if (argc > 3) {
 		createTrackbars();
 	}
 	//video capture object to acquire webcam feed
+	VideoCapture capture;
 	//open capture object at location zero (default location for webcam)
+	capture.open(2);
 	//set height and width of capture frame
+	capture.set(CV_CAP_PROP_FRAME_WIDTH,FRAME_WIDTH);
+	capture.set(CV_CAP_PROP_FRAME_HEIGHT,FRAME_HEIGHT);
 	//start an infinite loop where webcam feed is copied to cameraFeed matrix
 	//all of our operations will be performed within this loop
-	//----REMOVED CV::CAPTURE AND JUST USED THE ZED GETVIEW FUNCTION USED EARLIER
 	waitKey(1000);
-	
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-    // Loop until 'q' is pressed  ----- COMBINED BOTH CV AND ZED LOOPS INTO ONE
-    while (key != 'q') {
-        // Disparity Map filtering
-        zed->setConfidenceThreshold(confidenceThres);
-
-        // Get frames and launch the computation
-        bool res = zed->grab(dm_type);
-
-        if (!res) {
-            if (old_self_calibration_status != zed->getSelfCalibrationStatus()) {
-                std::cout << "Self Calibration Status : " << sl::zed::statuscode2str(zed->getSelfCalibrationStatus()) << std::endl;
-                old_self_calibration_status = zed->getSelfCalibrationStatus();
-            }
-
-            depth = zed->retrieveMeasure(sl::zed::MEASURE::DEPTH); // Get the pointer
-
-            // The following is the best way to retrieve a disparity map / image / confidence map in OpenCV Mat.
-            // If the buffer is not duplicated, it will be replaced by a next retrieve (retrieveImage, normalizeMeasure, getView...)
-            // Disparity, depth, confidence are 32F buffer by default and 8UC4 buffer in normalized format (displayable grayscale)
-
-
-            // -- The next part is about displaying the data --------------------------------------DISPLAY
-
-            // Normalize the disparity / depth map in order to use the full color range of gray level image
-			//ADDED _GPU TO ALL RETRIEVES, MAKES IT USE THE GPU BUFFER? IF IT DOES NOT MAKE IT FASTER, 
-			//JUST REMOVE ALL INSTANCES OF _GPU
-            
-			if (displayDisp)
-                slMat2cvMat(zed->normalizeMeasure_gpu(sl::zed::MEASURE::DISPARITY)).copyTo(disp);
-            else
-                slMat2cvMat(zed->normalizeMeasure_gpu(sl::zed::MEASURE::DEPTH)).copyTo(disp);
-
-            // To get the depth at a given position, click on the disparity / depth map image
-            cv::resize(disp, dispDisplay, displaySize);
-            imshow(mouseStruct.name, dispDisplay);
-
-            if (displayConfidenceMap) {
-                slMat2cvMat(zed->normalizeMeasure_gpu(sl::zed::MEASURE::CONFIDENCE)).copyTo(confidencemap);
-                cv::resize(confidencemap, confidencemapDisplay, displaySize);
-                imshow("confidence", confidencemapDisplay);
-            }
-
-			 // 'viewID' can be 'SIDE mode' or 'VIEW mode' - THIS DECIDES WHICH TYPE OF REGULAR VIEW TO USE 
-			 //BASED ON CASE STATEMENTS BELOW , CALLS THE WINDOW AS ANAGLYPH BUT MAY NOT BE
--            
-			if (viewID >= sl::zed::LEFT && viewID < sl::zed::LAST_SIDE)
--               //Not sure difference between retrieveImage and getView 
-				slMat2cvMat(zed->retrieveImage_gpu(static_cast<sl::zed::SIDE> (viewID))).copyTo(anaglyph);
--            else
-				//Zed->getView gets the image, copies to anaglyph matrix then converts matrix to cv::Mat to be used in imshow
--                slMat2cvMat(zed->getView_gpu(static_cast<sl::zed::VIEW_MODE> (viewID - (int) sl::zed::LAST_SIDE))).copyTo(anaglyph);
--
--            cv::resize(anaglyph, anaglyphDisplay, displaySize);
--            imshow("VIEW", anaglyphDisplay);
-
-            key = cv::waitKey(5);
-//--------------------------------------------------------------------------------------------------DISPLAY
-            // Keyboard shortcuts
-            switch (key) {
-                case 'b':
-                    if (confidenceThres >= 10)
-                        confidenceThres -= 10;
-                    break;
-                case 'n':
-                    if (confidenceThres <= 90)
-                        confidenceThres += 10;
-                    break;
-                    // From 'SIDE' enum
-                case '0': // Left
-                    viewID = 0;
-                    std::cout << "Current View switched to Left (rectified/aligned)" << std::endl;
-                    break;
-                case '1': // Right
-                    viewID = 1;
-                    std::cout << "Current View switched to Right (rectified/aligned)" << std::endl;
-                    break;
-                    // From 'VIEW' enum
-                case '2': // Side by Side
-                    viewID = 10;
-                    std::cout << "Current View switched to Side by Side mode" << std::endl;
-                    break;
-					// Overlay -REMOVED
-                    // Difference -REMOVED
-                    // Anaglyph -REMOVED
-            
-                case 'c':
-                    displayConfidenceMap = !displayConfidenceMap;
-                    break;
-                case 's':
-                    dm_type = (dm_type == sl::zed::SENSING_MODE::STANDARD) ? sl::zed::SENSING_MODE::FILL : sl::zed::SENSING_MODE::STANDARD;
-                    std::cout << "SENSING_MODE " << sensing_mode2str(dm_type) << std::endl;
-                    break;
-                case 'd':
-                    displayDisp = !displayDisp;
-                    break;
-            }
-        } else key = cv::waitKey(5);
- 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-		//store image to matrix  -- CHANGED TO MAKE THE ZED GETVIEW AND CONVERT TO CV::MAT THEN COPY INTO CAMERAFEED
-		slMat2cvMat(zed->getView_gpu(static_cast<sl::zed::VIEW_MODE> (viewID - (int) sl::zed::LAST_SIDE))).copyTo(cameraFeed);
+	while(1){
+		//store image to matrix
+		capture.read(cameraFeed);
 
 		src = cameraFeed;
 
@@ -574,9 +391,210 @@ if (argc > 3) {
 		waitKey(30);
 	}
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    // Quick check input arguments
+    bool readSVO = false;
+    std::string SVOName;
+    bool loadParams = false;
+    std::string ParamsName;
+    if (argc > 1) {
+        std::string _arg;
+        for (int i = 1; i < argc; i++) {
+            _arg = argv[i];
+            if (_arg.find(".svo") != std::string::npos) {
+                // If a SVO is given we save its name
+                readSVO = true;
+                SVOName = _arg;
+            }
+            if (_arg.find(".ZEDinitParam") != std::string::npos) {
+                // If a parameter file is given we save its name
+                loadParams = true;
+                ParamsName = _arg;
+            }
+        }
+    }
+
+    sl::zed::Camera* zed;
+
+    if (!readSVO) // Live Mode
+        zed = new sl::zed::Camera(sl::zed::HD720);
+    else // SVO playback mode
+        zed = new sl::zed::Camera(SVOName);
+
+    // Define a struct of parameters for the initialization
+    sl::zed::InitParams params;
+
+    if (loadParams) // A parameters file was given in argument, we load it
+        params.load(ParamsName);
+
+    // Enables verbosity in the console
+    params.verbose = true;
+
+
+    sl::zed::ERRCODE err = zed->init(params);
+    std::cout << "Error code : " << sl::zed::errcode2str(err) << std::endl;
+    if (err != sl::zed::SUCCESS) {
+        // Exit if an error occurred
+        delete zed;
+        return 1;
+    }
+
+    // Save the initialization parameters
+    // The file can be used later in any zed based application
+    params.save("MyParam");
+
+    char key = ' ';
+    int viewID = 0;
+    int confidenceThres = 100;
+
+    bool displayDisp = true;
+    bool displayConfidenceMap = false;
+
+    int width = zed->getImageSize().width; // Gets width and height of the feed
+    int height = zed->getImageSize().height;
+
+    cv::Mat disp(height, width, CV_8UC4); // Display can have width,height and a 4 channel matrix matrix of colours ( from 0-255)
+    cv::Mat anaglyph(height, width, CV_8UC4);
+    cv::Mat confidencemap(height, width, CV_8UC4);
+
+    cv::Size displaySize(720, 404);
+    cv::Mat dispDisplay(displaySize, CV_8UC4);
+    cv::Mat anaglyphDisplay(displaySize, CV_8UC4);
+    cv::Mat confidencemapDisplay(displaySize, CV_8UC4);
+
+    sl::zed::SENSING_MODE dm_type = sl::zed::STANDARD;
+
+    // Mouse callback initialization
+    sl::zed::Mat depth;
+    zed->grab(dm_type);
+    depth = zed->retrieveMeasure(sl::zed::MEASURE::DEPTH); // Get the pointer
+    // Set the structure
+    mouseStruct._image = cv::Size(width, height);
+    mouseStruct._resize = displaySize;
+    mouseStruct.data = (float*) depth.data;
+    mouseStruct.step = depth.step;
+    mouseStruct.name = "DEPTH";
+    mouseStruct.unit = unit2str(params.unit);
+
+    // The depth is limited to 20 METERS, as defined in zed::init()
+    zed->setDepthClampValue(10000);
+
+    // Create OpenCV Windows
+    // NOTE: You may encounter an issue with OpenGL support, to solve it either
+    // 	use the default rendering by removing ' | cv::WINDOW_OPENGL' from the flags
+    //	or recompile OpenCV with OpenGL support (you may also need the gtk OpenGL Extension
+    //	on Linux, provided by the packages libgtkglext1 libgtkglext1-dev)
+    cv::namedWindow(mouseStruct.name, cv::WINDOW_AUTOSIZE );
+    cv::setMouseCallback(mouseStruct.name, onMouseCallback, (void*) &mouseStruct);
+    cv::namedWindow("VIEW", cv::WINDOW_AUTOSIZE );
+
+    std::cout << "Press 'q' to exit" << std::endl;
+
+    // Jetson only. Execute the calling thread on core 2
+    sl::zed::Camera::sticktoCPUCore(2);
+
+    sl::zed::ZED_SELF_CALIBRATION_STATUS old_self_calibration_status = sl::zed::SELF_CALIBRATION_NOT_CALLED;
+
+    // Loop until 'q' is pressed
+    while (key != 'q') {
+        // Disparity Map filtering
+        zed->setConfidenceThreshold(confidenceThres);
+
+        // Get frames and launch the computation
+        bool res = zed->grab(dm_type);
+
+        if (!res) {
+            if (old_self_calibration_status != zed->getSelfCalibrationStatus()) {
+                std::cout << "Self Calibration Status : " << sl::zed::statuscode2str(zed->getSelfCalibrationStatus()) << std::endl;
+                old_self_calibration_status = zed->getSelfCalibrationStatus();
+            }
+
+            depth = zed->retrieveMeasure(sl::zed::MEASURE::DEPTH); // Get the pointer
+
+            // The following is the best way to retrieve a disparity map / image / confidence map in OpenCV Mat.
+            // If the buffer is not duplicated, it will be replaced by a next retrieve (retrieveImage, normalizeMeasure, getView...)
+            // Disparity, depth, confidence are 32F buffer by default and 8UC4 buffer in normalized format (displayable grayscale)
+
+
+            // -- The next part is about displaying the data --
+
+            // Normalize the disparity / depth map in order to use the full color range of gray level image
+            if (displayDisp)
+                slMat2cvMat(zed->normalizeMeasure(sl::zed::MEASURE::DISPARITY)).copyTo(disp);
+            else
+                slMat2cvMat(zed->normalizeMeasure(sl::zed::MEASURE::DEPTH)).copyTo(disp);
+
+            // To get the depth at a given position, click on the disparity / depth map image
+            cv::resize(disp, dispDisplay, displaySize);
+            imshow(mouseStruct.name, dispDisplay);
+
+            if (displayConfidenceMap) {
+                slMat2cvMat(zed->normalizeMeasure(sl::zed::MEASURE::CONFIDENCE)).copyTo(confidencemap);
+                cv::resize(confidencemap, confidencemapDisplay, displaySize);
+                imshow("confidence", confidencemapDisplay);
+            }
+
+            // 'viewID' can be 'SIDE mode' or 'VIEW mode'
+            if (viewID >= sl::zed::LEFT && viewID < sl::zed::LAST_SIDE)
+                slMat2cvMat(zed->retrieveImage(static_cast<sl::zed::SIDE> (viewID))).copyTo(anaglyph);
+            else
+                slMat2cvMat(zed->getView(static_cast<sl::zed::VIEW_MODE> (viewID - (int) sl::zed::LAST_SIDE))).copyTo(anaglyph);
+
+            cv::resize(anaglyph, anaglyphDisplay, displaySize);
+            imshow("VIEW", anaglyphDisplay);
+
+            key = cv::waitKey(5);
+
+            // Keyboard shortcuts
+            switch (key) {
+                case 'b':
+                    if (confidenceThres >= 10)
+                        confidenceThres -= 10;
+                    break;
+                case 'n':
+                    if (confidenceThres <= 90)
+                        confidenceThres += 10;
+                    break;
+                    // From 'SIDE' enum
+                case '0': // Left
+                    viewID = 0;
+                    std::cout << "Current View switched to Left (rectified/aligned)" << std::endl;
+                    break;
+                case '1': // Right
+                    viewID = 1;
+                    std::cout << "Current View switched to Right (rectified/aligned)" << std::endl;
+                    break;
+                    // From 'VIEW' enum
+                case '2': // Side by Side
+                    viewID = 10;
+                    std::cout << "Current View switched to Side by Side mode" << std::endl;
+                    break;
+                case '3': // Overlay
+                    viewID = 11;
+                    std::cout << "Current View switched to Overlay mode" << std::endl;
+                    break;
+                case '4': // Difference
+                    viewID = 9;
+                    std::cout << "Current View switched to Difference mode" << std::endl;
+                    break;
+                case '5': // Anaglyph
+                    viewID = 8;
+                    std::cout << "Current View switched to Anaglyph mode" << std::endl;
+                    break;
+                case 'c':
+                    displayConfidenceMap = !displayConfidenceMap;
+                    break;
+                case 's':
+                    dm_type = (dm_type == sl::zed::SENSING_MODE::STANDARD) ? sl::zed::SENSING_MODE::FILL : sl::zed::SENSING_MODE::STANDARD;
+                    std::cout << "SENSING_MODE " << sensing_mode2str(dm_type) << std::endl;
+                    break;
+                case 'd':
+                    displayDisp = !displayDisp;
+                    break;
+            }
+        } else key = cv::waitKey(5);
+    }
 
     delete zed;
     return 0;
