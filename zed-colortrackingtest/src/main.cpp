@@ -183,7 +183,7 @@ void morphOps(Mat &thresh){
 	dilate(thresh,thresh,dilateElement);
 	dilate(thresh,thresh,dilateElement);
 }
-void trackFilteredObject(Mat threshold,Mat HSV, Mat &cameraFeed)
+void trackFilteredObject(Mat threshold,Mat HSV, Mat &anaglyph)
 {
 	vector <Object> objects;
 	Mat temp;
@@ -227,14 +227,14 @@ void trackFilteredObject(Mat threshold,Mat HSV, Mat &cameraFeed)
 			if(objectFound ==true)
 			{
 				//draw object location on screen
-				drawObject(objects,cameraFeed);
+				drawObject(objects,anaglyph);
 			}
 		}
-		else putText(cameraFeed,"TOO MUCH NOISE! ADJUST FILTER",Point(0,50),1,2,Scalar(0,0,255),2);
+		else putText(anaglyph,"TOO MUCH NOISE! ADJUST FILTER",Point(0,50),1,2,Scalar(0,0,255),2);
 	}
 }
 
-void trackFilteredObject(Object theObject,Mat threshold,Mat HSV, Mat &cameraFeed){
+void trackFilteredObject(Object theObject,Mat threshold,Mat HSV, Mat &anaglyph){
 
 	vector <Object> objects;
 	Mat temp;
@@ -278,9 +278,9 @@ void trackFilteredObject(Object theObject,Mat threshold,Mat HSV, Mat &cameraFeed
 			//let user know you found an object
 			if(objectFound ==true){
 				//draw object location on screen
-				drawObject(objects,cameraFeed,temp,contours,hierarchy);}
+				drawObject(objects,anaglyph,temp,contours,hierarchy);}
 
-		}else putText(cameraFeed,"TOO MUCH NOISE! ADJUST FILTER",Point(0,50),1,2,Scalar(0,0,255),2);
+		}else putText(anaglyph,"TOO MUCH NOISE! ADJUST FILTER",Point(0,50),1,2,Scalar(0,0,255),2);
 	}
 }
 
@@ -369,12 +369,12 @@ if (argc > 3) {
     //	on Linux, provided by the packages libgtkglext1 libgtkglext1-dev)
     cv::namedWindow(mouseStruct.name, cv::WINDOW_AUTOSIZE );
     cv::setMouseCallback(mouseStruct.name, onMouseCallback, (void*) &mouseStruct);
-    cv::namedWindow("VIEW", cv::WINDOW_AUTOSIZE );
+    //cv::namedWindow("VIEW", cv::WINDOW_AUTOSIZE ); --REMOVED THIS WINDOW SINCE ITS THE SAME AS THE TRACKING ONE
 
     std::cout << "Press 'q' to exit" << std::endl;
 
     // Jetson only. Execute the calling thread on core 2
-    sl::zed::Camera::sticktoCPUCore(2);
+    //sl::zed::Camera::sticktoCPUCore(2);
 
     sl::zed::ZED_SELF_CALIBRATION_STATUS old_self_calibration_status = sl::zed::SELF_CALIBRATION_NOT_CALLED;
 
@@ -384,9 +384,9 @@ if (argc > 3) {
 	bool calibrationMode = true;
 
 	//Matrix to store each frame of the webcam feed
-	Mat cameraFeed;
-	Mat threshold;
-	Mat HSV;
+	//cv::Mat anaglyph; --USED TO BE CAMERAFEED
+	cv::Mat threshold;
+	cv::Mat HSV;
 
 	if(calibrationMode){
 		//create slider bars for HSV filtering
@@ -395,7 +395,7 @@ if (argc > 3) {
 	//video capture object to acquire webcam feed
 	//open capture object at location zero (default location for webcam)
 	//set height and width of capture frame
-	//start an infinite loop where webcam feed is copied to cameraFeed matrix
+	//start an infinite loop where webcam feed is copied to anaglyph matrix
 	//all of our operations will be performed within this loop
 	//----REMOVED CV::CAPTURE AND JUST USED THE ZED GETVIEW FUNCTION USED EARLIER
 	waitKey(1000);
@@ -430,32 +430,31 @@ if (argc > 3) {
 			//JUST REMOVE ALL INSTANCES OF _GPU
             
 			if (displayDisp)
-                slMat2cvMat(zed->normalizeMeasure_gpu(sl::zed::MEASURE::DISPARITY)).copyTo(disp);
+                slMat2cvMat(zed->normalizeMeasure(sl::zed::MEASURE::DISPARITY)).copyTo(disp);
             else
-                slMat2cvMat(zed->normalizeMeasure_gpu(sl::zed::MEASURE::DEPTH)).copyTo(disp);
+                slMat2cvMat(zed->normalizeMeasure(sl::zed::MEASURE::DEPTH)).copyTo(disp);
 
             // To get the depth at a given position, click on the disparity / depth map image
             cv::resize(disp, dispDisplay, displaySize);
             imshow(mouseStruct.name, dispDisplay);
 
             if (displayConfidenceMap) {
-                slMat2cvMat(zed->normalizeMeasure_gpu(sl::zed::MEASURE::CONFIDENCE)).copyTo(confidencemap);
+                slMat2cvMat(zed->normalizeMeasure(sl::zed::MEASURE::CONFIDENCE)).copyTo(confidencemap);
                 cv::resize(confidencemap, confidencemapDisplay, displaySize);
                 imshow("confidence", confidencemapDisplay);
             }
 
-			 // 'viewID' can be 'SIDE mode' or 'VIEW mode' - THIS DECIDES WHICH TYPE OF REGULAR VIEW TO USE 
-			 //BASED ON CASE STATEMENTS BELOW , CALLS THE WINDOW AS ANAGLYPH BUT MAY NOT BE
--            
-			if (viewID >= sl::zed::LEFT && viewID < sl::zed::LAST_SIDE)
--               //Not sure difference between retrieveImage and getView 
-				slMat2cvMat(zed->retrieveImage_gpu(static_cast<sl::zed::SIDE> (viewID))).copyTo(anaglyph);
--            else
-				//Zed->getView gets the image, copies to anaglyph matrix then converts matrix to cv::Mat to be used in imshow
--                slMat2cvMat(zed->getView_gpu(static_cast<sl::zed::VIEW_MODE> (viewID - (int) sl::zed::LAST_SIDE))).copyTo(anaglyph);
--
--            cv::resize(anaglyph, anaglyphDisplay, displaySize);
--            imshow("VIEW", anaglyphDisplay);
+		 // 'viewID' can be 'SIDE mode' or 'VIEW mode' - THIS DECIDES WHICH TYPE OF REGULAR VIEW TO USE 		 //BASED ON CASE STATEMENTS BELOW , CALLS THE WINDOW AS ANAGLYPH BUT MAY NOT BE
+            
+		if (viewID >= sl::zed::LEFT && viewID < sl::zed::LAST_SIDE) {
+              //Not sure difference between retrieveImage and getView 
+			slMat2cvMat(zed->retrieveImage(static_cast<sl::zed::SIDE> (viewID))).copyTo(anaglyph);	            	
+		}else {
+		//Zed->getView gets the image, copies to anaglyph matrix then converts matrix to cv::Mat to be used in imshow
+	               	slMat2cvMat(zed->getView(static_cast<sl::zed::VIEW_MODE> (viewID - (int) sl::zed::LAST_SIDE))).copyTo(anaglyph);
+		}
+            cv::resize(anaglyph, anaglyphDisplay, displaySize);
+            //imshow("VIEW", anaglyphDisplay); --REMOVED THIS WINDOW SINCE ITS THE SAME AS THE TRACKING ONE
 
             key = cv::waitKey(5);
 //--------------------------------------------------------------------------------------------------DISPLAY
@@ -502,16 +501,14 @@ if (argc > 3) {
  
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-		//store image to matrix  -- CHANGED TO MAKE THE ZED GETVIEW AND CONVERT TO CV::MAT THEN COPY INTO CAMERAFEED
-		slMat2cvMat(zed->getView_gpu(static_cast<sl::zed::VIEW_MODE> (viewID - (int) sl::zed::LAST_SIDE))).copyTo(cameraFeed);
-
-		src = cameraFeed;
+		//store image to matrix  -- CHANGED TO MAKE THE ZED GETVIEW AND CONVERT TO CV::MAT THEN COPY INTO anaglyph
+		src = anaglyph;
 
   		if( !src.data )
   		{ return -1; }
 
 		//convert frame from BGR to HSV colorspace
-		cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
+		cvtColor(anaglyph,HSV,COLOR_BGR2HSV);
 
 		if(calibrationMode==true){
 
@@ -519,7 +516,7 @@ if (argc > 3) {
 		// calibrationMode must be false
 
 		//if in calibration mode, we track objects based on the HSV slider values.
-			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
+			cvtColor(anaglyph,HSV,COLOR_BGR2HSV);
 			inRange(HSV,Scalar(H_MIN,S_MIN,V_MIN),Scalar(H_MAX,S_MAX,V_MAX),threshold);
 			morphOps(threshold);
 			imshow(windowName2,threshold);
@@ -534,7 +531,7 @@ if (argc > 3) {
 	  		/// Create a Trackbar for user to enter threshold
 	  		createTrackbar( "Min Threshold:", window_name, &lowThreshold, max_lowThreshold);
 	  		/// Show the image
-			trackFilteredObject(threshold,HSV,cameraFeed);
+			trackFilteredObject(threshold,HSV,anaglyph);
 		}
 		else{
 			//create some temp fruit objects so that
@@ -542,31 +539,31 @@ if (argc > 3) {
 			Object blue("blue"), yellow("yellow"), red("red"), green("green");
 
 			//first find blue objects
-			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
+			cvtColor(anaglyph,HSV,COLOR_BGR2HSV);
 			inRange(HSV,blue.getHSVmin(),blue.getHSVmax(),threshold);
 			morphOps(threshold);
-			trackFilteredObject(blue,threshold,HSV,cameraFeed);
+			trackFilteredObject(blue,threshold,HSV,anaglyph);
 			//then yellows
-			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
+			cvtColor(anaglyph,HSV,COLOR_BGR2HSV);
 			inRange(HSV,yellow.getHSVmin(),yellow.getHSVmax(),threshold);
 			morphOps(threshold);
-			trackFilteredObject(yellow,threshold,HSV,cameraFeed);
+			trackFilteredObject(yellow,threshold,HSV,anaglyph);
 			//then reds
-			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
+			cvtColor(anaglyph,HSV,COLOR_BGR2HSV);
 			inRange(HSV,red.getHSVmin(),red.getHSVmax(),threshold);
 			morphOps(threshold);
-			trackFilteredObject(red,threshold,HSV,cameraFeed);
+			trackFilteredObject(red,threshold,HSV,anaglyph);
 			//then greens
-			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
+			cvtColor(anaglyph,HSV,COLOR_BGR2HSV);
 			inRange(HSV,green.getHSVmin(),green.getHSVmax(),threshold);
 			morphOps(threshold);
-			trackFilteredObject(green,threshold,HSV,cameraFeed);
+			trackFilteredObject(green,threshold,HSV,anaglyph);
 
 		}
 		//show frames
 		//imshow(windowName2,threshold);
 
-		imshow(windowName,cameraFeed);
+		imshow(windowName,anaglyph);
 		//imshow(windowName1,HSV);
 
 		//delay 30ms so that screen can refresh.
