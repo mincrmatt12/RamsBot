@@ -1,25 +1,25 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
+Change Dir: /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_2aa8e/fast"
-/usr/bin/make -f CMakeFiles/cmTC_2aa8e.dir/build.make CMakeFiles/cmTC_2aa8e.dir/build
-make[1]: Entering directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_2aa8e.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -fPIC    -o CMakeFiles/cmTC_2aa8e.dir/CheckSymbolExists.c.o   -c /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_2aa8e
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2aa8e.dir/link.txt --verbose=1
-/usr/bin/cc  -fPIC     CMakeFiles/cmTC_2aa8e.dir/CheckSymbolExists.c.o  -o cmTC_2aa8e -rdynamic 
-CMakeFiles/cmTC_2aa8e.dir/CheckSymbolExists.c.o: In function `main':
+Run Build Command:"/usr/bin/make" "cmTC_53eae/fast"
+/usr/bin/make -f CMakeFiles/cmTC_53eae.dir/build.make CMakeFiles/cmTC_53eae.dir/build
+make[1]: Entering directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_53eae.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -fPIC    -o CMakeFiles/cmTC_53eae.dir/CheckSymbolExists.c.o   -c /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_53eae
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_53eae.dir/link.txt --verbose=1
+/usr/bin/cc  -fPIC     CMakeFiles/cmTC_53eae.dir/CheckSymbolExists.c.o  -o cmTC_53eae -rdynamic 
+CMakeFiles/cmTC_53eae.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x14): undefined reference to `pthread_create'
 CheckSymbolExists.c:(.text+0x18): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_2aa8e.dir/build.make:97: recipe for target 'cmTC_2aa8e' failed
-make[1]: *** [cmTC_2aa8e] Error 1
-make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_2aa8e/fast' failed
-make: *** [cmTC_2aa8e/fast] Error 2
+CMakeFiles/cmTC_53eae.dir/build.make:97: recipe for target 'cmTC_53eae' failed
+make[1]: *** [cmTC_53eae] Error 1
+make[1]: Leaving directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_53eae/fast' failed
+make: *** [cmTC_53eae/fast] Error 2
 
-File /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 
@@ -35,22 +35,22 @@ int main(int argc, char** argv)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
+Change Dir: /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_65358/fast"
-/usr/bin/make -f CMakeFiles/cmTC_65358.dir/build.make CMakeFiles/cmTC_65358.dir/build
-make[1]: Entering directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_65358.dir/CheckFunctionExists.c.o
-/usr/bin/cc    -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_65358.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
-Linking C executable cmTC_65358
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_65358.dir/link.txt --verbose=1
-/usr/bin/cc  -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_65358.dir/CheckFunctionExists.c.o  -o cmTC_65358 -rdynamic -lpthreads 
+Run Build Command:"/usr/bin/make" "cmTC_d6ad3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d6ad3.dir/build.make CMakeFiles/cmTC_d6ad3.dir/build
+make[1]: Entering directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d6ad3.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_d6ad3.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_d6ad3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d6ad3.dir/link.txt --verbose=1
+/usr/bin/cc  -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_d6ad3.dir/CheckFunctionExists.c.o  -o cmTC_d6ad3 -rdynamic -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_65358.dir/build.make:97: recipe for target 'cmTC_65358' failed
-make[1]: *** [cmTC_65358] Error 1
-make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_65358/fast' failed
-make: *** [cmTC_65358/fast] Error 2
+CMakeFiles/cmTC_d6ad3.dir/build.make:97: recipe for target 'cmTC_d6ad3' failed
+make[1]: *** [cmTC_d6ad3] Error 1
+make[1]: Leaving directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_d6ad3/fast' failed
+make: *** [cmTC_d6ad3/fast] Error 2
 
 

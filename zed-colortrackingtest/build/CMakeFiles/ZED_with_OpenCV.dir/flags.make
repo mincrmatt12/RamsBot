@@ -6,5 +6,5 @@ CXX_FLAGS =   -Wno-format-extra-args -std=c++0x -g -O3
 
 CXX_DEFINES = -DNO_AVX
 
-CXX_INCLUDES = -I/usr/include/opencv -I/usr/local/cuda-8.0/include -I/usr/local/zed/include -I/usr/include/eigen3 -I/home/ubuntu/Downloads/zed-colortrackingtest/include 
+CXX_INCLUDES = -I/usr/include/opencv -I/usr/local/cuda-8.0/include -I/usr/local/zed/include -I/usr/include/eigen3 -I/home/ubuntu/RamsBot/zed-colortrackingtest/include 
 

@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/ubuntu/Downloads/zed-colortrackingtest/src/Object.cpp
+/home/ubuntu/RamsBot/zed-colortrackingtest/src/Object.cpp
 Object.h
-/home/ubuntu/Downloads/zed-colortrackingtest/src/Object.h
+/home/ubuntu/RamsBot/zed-colortrackingtest/src/Object.h
 
-/home/ubuntu/Downloads/zed-colortrackingtest/src/Object.h
+/home/ubuntu/RamsBot/zed-colortrackingtest/src/Object.h
 string
 -
 cv.h
@@ -18,7 +18,7 @@ cv.h
 highgui.h
 -
 
-/home/ubuntu/Downloads/zed-colortrackingtest/src/main.cpp
+/home/ubuntu/RamsBot/zed-colortrackingtest/src/main.cpp
 stdio.h
 -
 string.h
@@ -34,7 +34,7 @@ vector
 sstream
 -
 Object.h
-/home/ubuntu/Downloads/zed-colortrackingtest/src/Object.h
+/home/ubuntu/RamsBot/zed-colortrackingtest/src/Object.h
 opencv2/opencv.hpp
 -
 zed/Camera.hpp

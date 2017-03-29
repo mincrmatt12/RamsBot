@@ -1,3 +1,3 @@
-/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/rebuild_cache.dir
-/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/edit_cache.dir
-/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/ZED_with_OpenCV.dir
+/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/edit_cache.dir
+/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/ZED_with_OpenCV.dir

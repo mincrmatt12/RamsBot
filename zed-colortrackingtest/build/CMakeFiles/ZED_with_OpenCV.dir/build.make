@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/Downloads/zed-colortrackingtest
+CMAKE_SOURCE_DIR = /home/ubuntu/RamsBot/zed-colortrackingtest
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/Downloads/zed-colortrackingtest/build
+CMAKE_BINARY_DIR = /home/ubuntu/RamsBot/zed-colortrackingtest/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/ZED_with_OpenCV.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/ZED_with_OpenCV.dir/flags.make
 
 CMakeFiles/ZED_with_OpenCV.dir/src/main.o: CMakeFiles/ZED_with_OpenCV.dir/flags.make
 CMakeFiles/ZED_with_OpenCV.dir/src/main.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ZED_with_OpenCV.dir/src/main.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ZED_with_OpenCV.dir/src/main.o -c /home/ubuntu/Downloads/zed-colortrackingtest/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ZED_with_OpenCV.dir/src/main.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ZED_with_OpenCV.dir/src/main.o -c /home/ubuntu/RamsBot/zed-colortrackingtest/src/main.cpp
 
 CMakeFiles/ZED_with_OpenCV.dir/src/main.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ZED_with_OpenCV.dir/src/main.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Downloads/zed-colortrackingtest/src/main.cpp > CMakeFiles/ZED_with_OpenCV.dir/src/main.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/RamsBot/zed-colortrackingtest/src/main.cpp > CMakeFiles/ZED_with_OpenCV.dir/src/main.i
 
 CMakeFiles/ZED_with_OpenCV.dir/src/main.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ZED_with_OpenCV.dir/src/main.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Downloads/zed-colortrackingtest/src/main.cpp -o CMakeFiles/ZED_with_OpenCV.dir/src/main.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/RamsBot/zed-colortrackingtest/src/main.cpp -o CMakeFiles/ZED_with_OpenCV.dir/src/main.s
 
 CMakeFiles/ZED_with_OpenCV.dir/src/main.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/ZED_with_OpenCV.dir/src/main.o.provides.build: CMakeFiles/ZED_with_Op
 
 CMakeFiles/ZED_with_OpenCV.dir/src/Object.o: CMakeFiles/ZED_with_OpenCV.dir/flags.make
 CMakeFiles/ZED_with_OpenCV.dir/src/Object.o: ../src/Object.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ZED_with_OpenCV.dir/src/Object.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ZED_with_OpenCV.dir/src/Object.o -c /home/ubuntu/Downloads/zed-colortrackingtest/src/Object.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ZED_with_OpenCV.dir/src/Object.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ZED_with_OpenCV.dir/src/Object.o -c /home/ubuntu/RamsBot/zed-colortrackingtest/src/Object.cpp
 
 CMakeFiles/ZED_with_OpenCV.dir/src/Object.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ZED_with_OpenCV.dir/src/Object.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/Downloads/zed-colortrackingtest/src/Object.cpp > CMakeFiles/ZED_with_OpenCV.dir/src/Object.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/RamsBot/zed-colortrackingtest/src/Object.cpp > CMakeFiles/ZED_with_OpenCV.dir/src/Object.i
 
 CMakeFiles/ZED_with_OpenCV.dir/src/Object.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ZED_with_OpenCV.dir/src/Object.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/Downloads/zed-colortrackingtest/src/Object.cpp -o CMakeFiles/ZED_with_OpenCV.dir/src/Object.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/RamsBot/zed-colortrackingtest/src/Object.cpp -o CMakeFiles/ZED_with_OpenCV.dir/src/Object.s
 
 CMakeFiles/ZED_with_OpenCV.dir/src/Object.o.requires:
 
@@ -133,11 +133,6 @@ ZED\ with\ OpenCV: /usr/lib/libopencv_videostab.so.2.4.13
 ZED\ with\ OpenCV: /usr/lib/libopencv_ts.a
 ZED\ with\ OpenCV: /usr/lib/libopencv_superres.so.2.4.13
 ZED\ with\ OpenCV: /usr/lib/libopencv_contrib.so.2.4.13
-ZED\ with\ OpenCV: /usr/lib/aarch64-linux-gnu/libcuda.so
-ZED\ with\ OpenCV: /usr/local/cuda-8.0/lib64/libcudart.so
-ZED\ with\ OpenCV: /usr/local/cuda-8.0/lib64/libnppc.so
-ZED\ with\ OpenCV: /usr/local/cuda-8.0/lib64/libnppi.so
-ZED\ with\ OpenCV: /usr/local/cuda-8.0/lib64/libnpps.so
 ZED\ with\ OpenCV: /usr/lib/libopencv_tegra.so.2.4.13
 ZED\ with\ OpenCV: /usr/lib/libopencv_stitching.so.2.4.13
 ZED\ with\ OpenCV: /usr/lib/libopencv_gpu.so.2.4.13
@@ -153,12 +148,11 @@ ZED\ with\ OpenCV: /usr/lib/libopencv_highgui.so.2.4.13
 ZED\ with\ OpenCV: /usr/lib/libopencv_imgproc.so.2.4.13
 ZED\ with\ OpenCV: /usr/lib/libopencv_flann.so.2.4.13
 ZED\ with\ OpenCV: /usr/lib/libopencv_core.so.2.4.13
-ZED\ with\ OpenCV: /usr/local/cuda-8.0/lib64/libcudart.so
 ZED\ with\ OpenCV: /usr/local/cuda-8.0/lib64/libnppc.so
 ZED\ with\ OpenCV: /usr/local/cuda-8.0/lib64/libnppi.so
 ZED\ with\ OpenCV: /usr/local/cuda-8.0/lib64/libnpps.so
 ZED\ with\ OpenCV: CMakeFiles/ZED_with_OpenCV.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable \"ZED with OpenCV\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable \"ZED with OpenCV\""
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ZED_with_OpenCV.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -176,6 +170,6 @@ CMakeFiles/ZED_with_OpenCV.dir/clean:
 .PHONY : CMakeFiles/ZED_with_OpenCV.dir/clean
 
 CMakeFiles/ZED_with_OpenCV.dir/depend:
-	cd /home/ubuntu/Downloads/zed-colortrackingtest/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/Downloads/zed-colortrackingtest /home/ubuntu/Downloads/zed-colortrackingtest /home/ubuntu/Downloads/zed-colortrackingtest/build /home/ubuntu/Downloads/zed-colortrackingtest/build /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/ZED_with_OpenCV.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu/RamsBot/zed-colortrackingtest/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/RamsBot/zed-colortrackingtest /home/ubuntu/RamsBot/zed-colortrackingtest /home/ubuntu/RamsBot/zed-colortrackingtest/build /home/ubuntu/RamsBot/zed-colortrackingtest/build /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/ZED_with_OpenCV.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ZED_with_OpenCV.dir/depend
 

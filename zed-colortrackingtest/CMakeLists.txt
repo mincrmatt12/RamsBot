@@ -44,6 +44,7 @@ link_directories(${OpenCV_LIBRARY_DIRS})
 link_directories(${CUDA_LIBRARY_DIRS})
 
 SET(SRC_FOLDER src)
+SET(CUDA_USE_STATIC_CUDA_RUNTIME OFF)
 FILE(GLOB_RECURSE SRC_FILES "${SRC_FOLDER}/*.cpp")
 
 ADD_EXECUTABLE(${execName} ${SRC_FILES})
@@ -54,5 +55,5 @@ add_definitions(-std=c++0x -g -O3)
 TARGET_LINK_LIBRARIES(${execName}
                         ${ZED_LIBRARIES}
                         ${OpenCV_LIBRARIES}
-			${CUDA_CUDA_LIBRARY} ${CUDA_CUDART_LIBRARY} ${CUDA_npp_LIBRARY}
+			${CUDA_LIBRARY}
                     )

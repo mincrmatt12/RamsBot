@@ -10,7 +10,7 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is GNU, found in "/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/3.5.1/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/3.5.1/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: /usr/bin/c++ 
@@ -23,33 +23,33 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is GNU, found in "/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/3.5.1/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/3.5.1/CompilerIdCXX/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
+Change Dir: /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_d604e/fast"
-/usr/bin/make -f CMakeFiles/cmTC_d604e.dir/build.make CMakeFiles/cmTC_d604e.dir/build
-make[1]: Entering directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_d604e.dir/testCCompiler.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_d604e.dir/testCCompiler.c.o   -c /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_d604e
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d604e.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_d604e.dir/testCCompiler.c.o  -o cmTC_d604e -rdynamic 
-make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_4c4b8/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4c4b8.dir/build.make CMakeFiles/cmTC_4c4b8.dir/build
+make[1]: Entering directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4c4b8.dir/testCCompiler.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_4c4b8.dir/testCCompiler.c.o   -c /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_4c4b8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4c4b8.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_4c4b8.dir/testCCompiler.c.o  -o cmTC_4c4b8 -rdynamic 
+make[1]: Leaving directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
+Change Dir: /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_93b9e/fast"
-/usr/bin/make -f CMakeFiles/cmTC_93b9e.dir/build.make CMakeFiles/cmTC_93b9e.dir/build
-make[1]: Entering directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_93b9e.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_93b9e.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_93b9e
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_93b9e.dir/link.txt --verbose=1
-/usr/bin/cc      -v CMakeFiles/cmTC_93b9e.dir/CMakeCCompilerABI.c.o  -o cmTC_93b9e -rdynamic  
+Run Build Command:"/usr/bin/make" "cmTC_9c2ac/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9c2ac.dir/build.make CMakeFiles/cmTC_9c2ac.dir/build
+make[1]: Entering directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9c2ac.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_9c2ac.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_9c2ac
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9c2ac.dir/link.txt --verbose=1
+/usr/bin/cc      -v CMakeFiles/cmTC_9c2ac.dir/CMakeCCompilerABI.c.o  -o cmTC_9c2ac -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper
@@ -59,23 +59,23 @@ Thread model: posix
 gcc version 5.4.0 20160609 (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.4) 
 COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_93b9e' '-rdynamic' '-mlittle-endian' '-mabi=lp64'
- /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccvyxA9i.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -z relro -o cmTC_93b9e /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_93b9e.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o
-make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_9c2ac' '-rdynamic' '-mlittle-endian' '-mabi=lp64'
+ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccCJ3iqq.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -z relro -o cmTC_9c2ac /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_9c2ac.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o
+make[1]: Leaving directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_93b9e/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_93b9e.dir/build.make CMakeFiles/cmTC_93b9e.dir/build]
-  ignore line: [make[1]: Entering directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_93b9e.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_93b9e.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_93b9e]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_93b9e.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_93b9e.dir/CMakeCCompilerABI.c.o  -o cmTC_93b9e -rdynamic  ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_9c2ac/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_9c2ac.dir/build.make CMakeFiles/cmTC_9c2ac.dir/build]
+  ignore line: [make[1]: Entering directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_9c2ac.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_9c2ac.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_9c2ac]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9c2ac.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_9c2ac.dir/CMakeCCompilerABI.c.o  -o cmTC_9c2ac -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper]
@@ -85,13 +85,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 5.4.0 20160609 (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.4) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_93b9e' '-rdynamic' '-mlittle-endian' '-mabi=lp64']
-  link line: [ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccvyxA9i.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -z relro -o cmTC_93b9e /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_93b9e.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_9c2ac' '-rdynamic' '-mlittle-endian' '-mabi=lp64']
+  link line: [ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccCJ3iqq.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -z relro -o cmTC_9c2ac /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_9c2ac.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccvyxA9i.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccCJ3iqq.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -111,7 +111,7 @@ Parsed C implicit link information from above output:
     arg [--fix-cortex-a53-843419] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_93b9e] ==> ignore
+    arg [cmTC_9c2ac] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crt1.o] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/crtbegin.o] ==> ignore
@@ -123,7 +123,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/aarch64-linux-gnu] ==> dir [/usr/lib/aarch64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/aarch64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/aarch64-linux-gnu/5/../../..]
-    arg [CMakeFiles/cmTC_93b9e.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_9c2ac.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -155,17 +155,17 @@ Parsed C implicit link information from above output:
 
 
 Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
+Change Dir: /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_fd857/fast"
-/usr/bin/make -f CMakeFiles/cmTC_fd857.dir/build.make CMakeFiles/cmTC_fd857.dir/build
-make[1]: Entering directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_fd857.dir/feature_tests.c.o
-/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_fd857.dir/feature_tests.c.o   -c /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_fd857
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fd857.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_fd857.dir/feature_tests.c.o  -o cmTC_fd857 -rdynamic 
-make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_6d351/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6d351.dir/build.make CMakeFiles/cmTC_6d351.dir/build
+make[1]: Entering directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6d351.dir/feature_tests.c.o
+/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_6d351.dir/feature_tests.c.o   -c /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_6d351
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6d351.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_6d351.dir/feature_tests.c.o  -o cmTC_6d351 -rdynamic 
+make[1]: Leaving directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -175,17 +175,17 @@ make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/C
 
 
 Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
+Change Dir: /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_24af9/fast"
-/usr/bin/make -f CMakeFiles/cmTC_24af9.dir/build.make CMakeFiles/cmTC_24af9.dir/build
-make[1]: Entering directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_24af9.dir/feature_tests.c.o
-/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_24af9.dir/feature_tests.c.o   -c /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_24af9
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_24af9.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_24af9.dir/feature_tests.c.o  -o cmTC_24af9 -rdynamic 
-make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_04de7/fast"
+/usr/bin/make -f CMakeFiles/cmTC_04de7.dir/build.make CMakeFiles/cmTC_04de7.dir/build
+make[1]: Entering directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_04de7.dir/feature_tests.c.o
+/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_04de7.dir/feature_tests.c.o   -c /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_04de7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_04de7.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_04de7.dir/feature_tests.c.o  -o cmTC_04de7 -rdynamic 
+make[1]: Leaving directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -195,17 +195,17 @@ make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/C
 
 
 Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
+Change Dir: /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_a8868/fast"
-/usr/bin/make -f CMakeFiles/cmTC_a8868.dir/build.make CMakeFiles/cmTC_a8868.dir/build
-make[1]: Entering directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_a8868.dir/feature_tests.c.o
-/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_a8868.dir/feature_tests.c.o   -c /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_a8868
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a8868.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_a8868.dir/feature_tests.c.o  -o cmTC_a8868 -rdynamic 
-make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_fa4bb/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fa4bb.dir/build.make CMakeFiles/cmTC_fa4bb.dir/build
+make[1]: Entering directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fa4bb.dir/feature_tests.c.o
+/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_fa4bb.dir/feature_tests.c.o   -c /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_fa4bb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fa4bb.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_fa4bb.dir/feature_tests.c.o  -o cmTC_fa4bb -rdynamic 
+make[1]: Leaving directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -213,30 +213,30 @@ make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/C
     Feature record: C_FEATURE:0c_static_assert
     Feature record: C_FEATURE:0c_variadic_macros
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
+Change Dir: /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_b6dcd/fast"
-/usr/bin/make -f CMakeFiles/cmTC_b6dcd.dir/build.make CMakeFiles/cmTC_b6dcd.dir/build
-make[1]: Entering directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_b6dcd.dir/testCXXCompiler.cxx.o
-/usr/bin/c++      -o CMakeFiles/cmTC_b6dcd.dir/testCXXCompiler.cxx.o -c /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_b6dcd
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b6dcd.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_b6dcd.dir/testCXXCompiler.cxx.o  -o cmTC_b6dcd -rdynamic 
-make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_dd6a6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_dd6a6.dir/build.make CMakeFiles/cmTC_dd6a6.dir/build
+make[1]: Entering directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_dd6a6.dir/testCXXCompiler.cxx.o
+/usr/bin/c++      -o CMakeFiles/cmTC_dd6a6.dir/testCXXCompiler.cxx.o -c /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_dd6a6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dd6a6.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_dd6a6.dir/testCXXCompiler.cxx.o  -o cmTC_dd6a6 -rdynamic 
+make[1]: Leaving directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
+Change Dir: /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_72393/fast"
-/usr/bin/make -f CMakeFiles/cmTC_72393.dir/build.make CMakeFiles/cmTC_72393.dir/build
-make[1]: Entering directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_72393.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++      -o CMakeFiles/cmTC_72393.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_72393
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_72393.dir/link.txt --verbose=1
-/usr/bin/c++       -v CMakeFiles/cmTC_72393.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_72393 -rdynamic  
+Run Build Command:"/usr/bin/make" "cmTC_6ad5c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6ad5c.dir/build.make CMakeFiles/cmTC_6ad5c.dir/build
+make[1]: Entering directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_6ad5c.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++      -o CMakeFiles/cmTC_6ad5c.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_6ad5c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6ad5c.dir/link.txt --verbose=1
+/usr/bin/c++       -v CMakeFiles/cmTC_6ad5c.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_6ad5c -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper
@@ -246,23 +246,23 @@ Thread model: posix
 gcc version 5.4.0 20160609 (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.4) 
 COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_72393' '-rdynamic' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64'
- /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccZINNFg.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -z relro -o cmTC_72393 /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_72393.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o
-make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6ad5c' '-rdynamic' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64'
+ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccAUFXeC.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -z relro -o cmTC_6ad5c /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_6ad5c.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o
+make[1]: Leaving directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_72393/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_72393.dir/build.make CMakeFiles/cmTC_72393.dir/build]
-  ignore line: [make[1]: Entering directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building CXX object CMakeFiles/cmTC_72393.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_72393.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_72393]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_72393.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_72393.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_72393 -rdynamic  ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_6ad5c/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_6ad5c.dir/build.make CMakeFiles/cmTC_6ad5c.dir/build]
+  ignore line: [make[1]: Entering directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_6ad5c.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_6ad5c.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_6ad5c]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6ad5c.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_6ad5c.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_6ad5c -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper]
@@ -272,13 +272,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 5.4.0 20160609 (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.4) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_72393' '-rdynamic' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64']
-  link line: [ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccZINNFg.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -z relro -o cmTC_72393 /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_72393.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6ad5c' '-rdynamic' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64']
+  link line: [ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccAUFXeC.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -z relro -o cmTC_6ad5c /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_6ad5c.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccZINNFg.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccAUFXeC.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -298,7 +298,7 @@ Parsed CXX implicit link information from above output:
     arg [--fix-cortex-a53-843419] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_72393] ==> ignore
+    arg [cmTC_6ad5c] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crt1.o] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/crtbegin.o] ==> ignore
@@ -310,7 +310,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/aarch64-linux-gnu] ==> dir [/usr/lib/aarch64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/aarch64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/aarch64-linux-gnu/5/../../..]
-    arg [CMakeFiles/cmTC_72393.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_6ad5c.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -340,17 +340,17 @@ Parsed CXX implicit link information from above output:
 
 
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
-Change Dir: /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
+Change Dir: /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_706b8/fast"
-/usr/bin/make -f CMakeFiles/cmTC_706b8.dir/build.make CMakeFiles/cmTC_706b8.dir/build
-make[1]: Entering directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_706b8.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++14 -o CMakeFiles/cmTC_706b8.dir/feature_tests.cxx.o -c /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_706b8
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_706b8.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_706b8.dir/feature_tests.cxx.o  -o cmTC_706b8 -rdynamic 
-make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_3b0c6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3b0c6.dir/build.make CMakeFiles/cmTC_3b0c6.dir/build
+make[1]: Entering directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_3b0c6.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++14 -o CMakeFiles/cmTC_3b0c6.dir/feature_tests.cxx.o -c /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_3b0c6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3b0c6.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_3b0c6.dir/feature_tests.cxx.o  -o cmTC_3b0c6 -rdynamic 
+make[1]: Leaving directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -413,17 +413,17 @@ make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/C
 
 
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
-Change Dir: /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
+Change Dir: /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_d4edf/fast"
-/usr/bin/make -f CMakeFiles/cmTC_d4edf.dir/build.make CMakeFiles/cmTC_d4edf.dir/build
-make[1]: Entering directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_d4edf.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_d4edf.dir/feature_tests.cxx.o -c /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_d4edf
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d4edf.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_d4edf.dir/feature_tests.cxx.o  -o cmTC_d4edf -rdynamic 
-make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_c6314/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c6314.dir/build.make CMakeFiles/cmTC_c6314.dir/build
+make[1]: Entering directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_c6314.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_c6314.dir/feature_tests.cxx.o -c /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_c6314
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c6314.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_c6314.dir/feature_tests.cxx.o  -o cmTC_c6314 -rdynamic 
+make[1]: Leaving directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -486,17 +486,17 @@ make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/C
 
 
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
-Change Dir: /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
+Change Dir: /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_7e7db/fast"
-/usr/bin/make -f CMakeFiles/cmTC_7e7db.dir/build.make CMakeFiles/cmTC_7e7db.dir/build
-make[1]: Entering directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_7e7db.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_7e7db.dir/feature_tests.cxx.o -c /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_7e7db
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7e7db.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_7e7db.dir/feature_tests.cxx.o  -o cmTC_7e7db -rdynamic 
-make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_1bde3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1bde3.dir/build.make CMakeFiles/cmTC_1bde3.dir/build
+make[1]: Entering directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_1bde3.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_1bde3.dir/feature_tests.cxx.o -c /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_1bde3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1bde3.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_1bde3.dir/feature_tests.cxx.o  -o cmTC_1bde3 -rdynamic 
+make[1]: Leaving directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -557,30 +557,30 @@ make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/C
     Feature record: CXX_FEATURE:0cxx_variadic_macros
     Feature record: CXX_FEATURE:0cxx_variadic_templates
 Determining if the include file pthread.h exists passed with the following output:
-Change Dir: /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
+Change Dir: /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_397de/fast"
-/usr/bin/make -f CMakeFiles/cmTC_397de.dir/build.make CMakeFiles/cmTC_397de.dir/build
-make[1]: Entering directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_397de.dir/CheckIncludeFile.c.o
-/usr/bin/cc    -fPIC    -o CMakeFiles/cmTC_397de.dir/CheckIncludeFile.c.o   -c /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
-Linking C executable cmTC_397de
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_397de.dir/link.txt --verbose=1
-/usr/bin/cc  -fPIC     CMakeFiles/cmTC_397de.dir/CheckIncludeFile.c.o  -o cmTC_397de -rdynamic 
-make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_b651a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b651a.dir/build.make CMakeFiles/cmTC_b651a.dir/build
+make[1]: Entering directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b651a.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -fPIC    -o CMakeFiles/cmTC_b651a.dir/CheckIncludeFile.c.o   -c /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_b651a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b651a.dir/link.txt --verbose=1
+/usr/bin/cc  -fPIC     CMakeFiles/cmTC_b651a.dir/CheckIncludeFile.c.o  -o cmTC_b651a -rdynamic 
+make[1]: Leaving directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
 
 
 Determining if the function pthread_create exists in the pthread passed with the following output:
-Change Dir: /home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
+Change Dir: /home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_6f68a/fast"
-/usr/bin/make -f CMakeFiles/cmTC_6f68a.dir/build.make CMakeFiles/cmTC_6f68a.dir/build
-make[1]: Entering directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_6f68a.dir/CheckFunctionExists.c.o
-/usr/bin/cc    -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_6f68a.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
-Linking C executable cmTC_6f68a
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6f68a.dir/link.txt --verbose=1
-/usr/bin/cc  -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_6f68a.dir/CheckFunctionExists.c.o  -o cmTC_6f68a -rdynamic -lpthread 
-make[1]: Leaving directory '/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_3fb01/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3fb01.dir/build.make CMakeFiles/cmTC_3fb01.dir/build
+make[1]: Entering directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3fb01.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_3fb01.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_3fb01
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3fb01.dir/link.txt --verbose=1
+/usr/bin/cc  -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_3fb01.dir/CheckFunctionExists.c.o  -o cmTC_3fb01 -rdynamic -lpthread 
+make[1]: Leaving directory '/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/CMakeTmp'
 
 

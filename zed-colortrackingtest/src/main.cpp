@@ -54,6 +54,17 @@ typedef struct mouseOCVStruct {
 
 mouseOCV mouseStruct;
 
+/*static int getDepth(int32_t x, int32_t y){
+        mouseOCVStruct* data = (mouseOCVStruct*) &mouseStruct;
+	
+        int y_int = (y * data->_image.height / data->_resize.height);
+        int x_int = (x * data->_image.width / data->_resize.width);
+
+        float* ptr_image_num = (float*) ((int8_t*) data->data + y_int * data->step);
+
+        return (int)( ptr_image_num[x_int]);
+}*/
+
 static void onMouseCallback(int32_t event, int32_t x, int32_t y, int32_t flag, void * param) {
     if (event == CV_EVENT_LBUTTONDOWN) {
         mouseOCVStruct* data = (mouseOCVStruct*) param;
@@ -125,6 +136,15 @@ string intToString(int number){
 	return ss.str();
 }
 
+string floatToString(float number){
+
+	std::stringstream ss;
+	ss << fixed << setprecision(2) << number;
+	return ss.str();
+}
+
+
+
 void createTrackbars(){
 	//create window for trackbars
 	namedWindow(trackbarWindowName,0);
@@ -159,12 +179,22 @@ void drawObject(vector<Object> theObjects,Mat &frame, Mat &temp, vector< vector<
 	}
 }
 
-void drawObject(vector<Object> theObjects,Mat &frame){
+void drawObject(vector<Object> theObjects,Mat &frame, void * param){
+
+	mouseOCVStruct* data = (mouseOCVStruct*) param;
+
+        
 
 	for(int i =0; i<theObjects.size(); i++){
 
+	int y_int = ((theObjects.at(i).getYPos()) * data->_image.height / data->_resize.height);
+        int x_int = ((theObjects.at(i).getXPos()) * data->_image.width / data->_resize.width);
+
+        float* ptr_image_num = (float*) ((int8_t*) data->data + y_int * data->step);
+        float dist = ptr_image_num[x_int];
+
 	cv::circle(frame,cv::Point(theObjects.at(i).getXPos(),theObjects.at(i).getYPos()),10,cv::Scalar(0,0,255));
-	cv::putText(frame,intToString(theObjects.at(i).getXPos())+ " , " + intToString(theObjects.at(i).getYPos()),cv::Point(theObjects.at(i).getXPos(),theObjects.at(i).getYPos()+20),1,1,Scalar(0,255,0));
+	cv::putText(frame,intToString(theObjects.at(i).getXPos())+ " , " + intToString(theObjects.at(i).getYPos())+ " , " + floatToString(dist),cv::Point(theObjects.at(i).getXPos(),theObjects.at(i).getYPos()+20),1,1,Scalar(0,255,0));
 	cv::putText(frame,theObjects.at(i).getType(),cv::Point(theObjects.at(i).getXPos(),theObjects.at(i).getYPos()-30),1,2,theObjects.at(i).getColor());
 	}
 }
@@ -183,7 +213,7 @@ void morphOps(Mat &thresh){
 	dilate(thresh,thresh,dilateElement);
 	dilate(thresh,thresh,dilateElement);
 }
-void trackFilteredObject(Mat threshold,Mat HSV, Mat &cameraFeed)
+void trackFilteredObject(Mat threshold,Mat HSV, Mat &anaglyph, void * param)
 {
 	vector <Object> objects;
 	Mat temp;
@@ -227,14 +257,14 @@ void trackFilteredObject(Mat threshold,Mat HSV, Mat &cameraFeed)
 			if(objectFound ==true)
 			{
 				//draw object location on screen
-				drawObject(objects,cameraFeed);
+				drawObject(objects,anaglyph,&param);
 			}
 		}
-		else putText(cameraFeed,"TOO MUCH NOISE! ADJUST FILTER",Point(0,50),1,2,Scalar(0,0,255),2);
+		else putText(anaglyph,"TOO MUCH NOISE! ADJUST FILTER",Point(0,50),1,2,Scalar(0,0,255),2);
 	}
 }
 
-void trackFilteredObject(Object theObject,Mat threshold,Mat HSV, Mat &cameraFeed){
+void trackFilteredObject(Object theObject,Mat threshold,Mat HSV, Mat &anaglyph){
 
 	vector <Object> objects;
 	Mat temp;
@@ -278,9 +308,9 @@ void trackFilteredObject(Object theObject,Mat threshold,Mat HSV, Mat &cameraFeed
 			//let user know you found an object
 			if(objectFound ==true){
 				//draw object location on screen
-				drawObject(objects,cameraFeed,temp,contours,hierarchy);}
+				drawObject(objects,anaglyph,temp,contours,hierarchy);}
 
-		}else putText(cameraFeed,"TOO MUCH NOISE! ADJUST FILTER",Point(0,50),1,2,Scalar(0,0,255),2);
+		}else putText(anaglyph,"TOO MUCH NOISE! ADJUST FILTER",Point(0,50),1,2,Scalar(0,0,255),2);
 	}
 }
 
@@ -293,144 +323,26 @@ if (argc > 3) {
         return -1;
     }
 
+    // Quick check input arguments - REMOVED
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//if we would like to calibrate our filter values, set to true.
-	bool calibrationMode = true;
-
-	//Matrix to store each frame of the webcam feed
-	Mat cameraFeed;
-	Mat threshold;
-	Mat HSV;
-
-	if(calibrationMode){
-		//create slider bars for HSV filtering
-		createTrackbars();
-	}
-	//video capture object to acquire webcam feed
-	VideoCapture capture;
-	//open capture object at location zero (default location for webcam)
-	capture.open(2);
-	//set height and width of capture frame
-	capture.set(CV_CAP_PROP_FRAME_WIDTH,FRAME_WIDTH);
-	capture.set(CV_CAP_PROP_FRAME_HEIGHT,FRAME_HEIGHT);
-	//start an infinite loop where webcam feed is copied to cameraFeed matrix
-	//all of our operations will be performed within this loop
-	waitKey(1000);
-	while(1){
-		//store image to matrix
-		capture.read(cameraFeed);
-
-		src = cameraFeed;
-
-  		if( !src.data )
-  		{ return -1; }
-
-		//convert frame from BGR to HSV colorspace
-		cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
-
-		if(calibrationMode==true){
-
-		//need to find the appropriate color range values
-		// calibrationMode must be false
-
-		//if in calibration mode, we track objects based on the HSV slider values.
-			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
-			inRange(HSV,Scalar(H_MIN,S_MIN,V_MIN),Scalar(H_MAX,S_MAX,V_MAX),threshold);
-			morphOps(threshold);
-			imshow(windowName2,threshold);
-
-		//the folowing for canny edge detec
-			/// Create a matrix of the same type and size as src (for dst)
-	  		dst.create( src.size(), src.type() );
-	  		/// Convert the image to grayscale
-	  		cvtColor( src, src_gray, CV_BGR2GRAY );
-	  		/// Create a window
-	  		namedWindow( window_name, CV_WINDOW_AUTOSIZE );
-	  		/// Create a Trackbar for user to enter threshold
-	  		createTrackbar( "Min Threshold:", window_name, &lowThreshold, max_lowThreshold);
-	  		/// Show the image
-			trackFilteredObject(threshold,HSV,cameraFeed);
-		}
-		else{
-			//create some temp fruit objects so that
-			//we can use their member functions/information
-			Object blue("blue"), yellow("yellow"), red("red"), green("green");
-
-			//first find blue objects
-			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
-			inRange(HSV,blue.getHSVmin(),blue.getHSVmax(),threshold);
-			morphOps(threshold);
-			trackFilteredObject(blue,threshold,HSV,cameraFeed);
-			//then yellows
-			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
-			inRange(HSV,yellow.getHSVmin(),yellow.getHSVmax(),threshold);
-			morphOps(threshold);
-			trackFilteredObject(yellow,threshold,HSV,cameraFeed);
-			//then reds
-			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
-			inRange(HSV,red.getHSVmin(),red.getHSVmax(),threshold);
-			morphOps(threshold);
-			trackFilteredObject(red,threshold,HSV,cameraFeed);
-			//then greens
-			cvtColor(cameraFeed,HSV,COLOR_BGR2HSV);
-			inRange(HSV,green.getHSVmin(),green.getHSVmax(),threshold);
-			morphOps(threshold);
-			trackFilteredObject(green,threshold,HSV,cameraFeed);
-
-		}
-		//show frames
-		//imshow(windowName2,threshold);
-
-		imshow(windowName,cameraFeed);
-		//imshow(windowName1,HSV);
-
-		//delay 30ms so that screen can refresh.
-		//image will not appear without this waitKey() command
-		waitKey(30);
-	}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    // Quick check input arguments
-    bool readSVO = false;
-    std::string SVOName;
-    bool loadParams = false;
-    std::string ParamsName;
-    if (argc > 1) {
-        std::string _arg;
-        for (int i = 1; i < argc; i++) {
-            _arg = argv[i];
-            if (_arg.find(".svo") != std::string::npos) {
-                // If a SVO is given we save its name
-                readSVO = true;
-                SVOName = _arg;
-            }
-            if (_arg.find(".ZEDinitParam") != std::string::npos) {
-                // If a parameter file is given we save its name
-                loadParams = true;
-                ParamsName = _arg;
-            }
-        }
-    }
 
     sl::zed::Camera* zed;
 
-    if (!readSVO) // Live Mode
+// Live Mode
         zed = new sl::zed::Camera(sl::zed::HD720);
-    else // SVO playback mode
-        zed = new sl::zed::Camera(SVOName);
+
+		
+	// SVO playback mode - REMOVED
 
     // Define a struct of parameters for the initialization
     sl::zed::InitParams params;
 
-    if (loadParams) // A parameters file was given in argument, we load it
-        params.load(ParamsName);
+ // If A parameters file was given in argument, we load it - REMOVED
+  
 
     // Enables verbosity in the console
     params.verbose = true;
-
+    //params.unit = METERS;
 
     sl::zed::ERRCODE err = zed->init(params);
     std::cout << "Error code : " << sl::zed::errcode2str(err) << std::endl;
@@ -440,9 +352,10 @@ if (argc > 3) {
         return 1;
     }
 
+
+
     // Save the initialization parameters
-    // The file can be used later in any zed based application
-    params.save("MyParam");
+    // The file can be used later in any zed based application - REMOVED
 
     char key = ' ';
     int viewID = 0;
@@ -469,7 +382,8 @@ if (argc > 3) {
     sl::zed::Mat depth;
     zed->grab(dm_type);
     depth = zed->retrieveMeasure(sl::zed::MEASURE::DEPTH); // Get the pointer
-    // Set the structure
+    
+	// Set the structure
     mouseStruct._image = cv::Size(width, height);
     mouseStruct._resize = displaySize;
     mouseStruct.data = (float*) depth.data;
@@ -487,16 +401,41 @@ if (argc > 3) {
     //	on Linux, provided by the packages libgtkglext1 libgtkglext1-dev)
     cv::namedWindow(mouseStruct.name, cv::WINDOW_AUTOSIZE );
     cv::setMouseCallback(mouseStruct.name, onMouseCallback, (void*) &mouseStruct);
-    cv::namedWindow("VIEW", cv::WINDOW_AUTOSIZE );
+    //cv::namedWindow("VIEW", cv::WINDOW_AUTOSIZE ); --REMOVED THIS WINDOW SINCE ITS THE SAME AS THE TRACKING ONE
 
     std::cout << "Press 'q' to exit" << std::endl;
 
     // Jetson only. Execute the calling thread on core 2
-    sl::zed::Camera::sticktoCPUCore(2);
+    //sl::zed::Camera::sticktoCPUCore(2);
 
     sl::zed::ZED_SELF_CALIBRATION_STATUS old_self_calibration_status = sl::zed::SELF_CALIBRATION_NOT_CALLED;
 
-    // Loop until 'q' is pressed
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	//if we would like to calibrate our filter values, set to true.
+	bool calibrationMode = true;
+
+	//Matrix to store each frame of the webcam feed
+	//cv::Mat anaglyph; --USED TO BE CAMERAFEED
+	cv::Mat threshold;
+	cv::Mat HSV;
+
+	if(calibrationMode){
+		//create slider bars for HSV filtering
+		createTrackbars();
+	}
+	//video capture object to acquire webcam feed
+	//open capture object at location zero (default location for webcam)
+	//set height and width of capture frame
+	//start an infinite loop where webcam feed is copied to anaglyph matrix
+	//all of our operations will be performed within this loop
+	//----REMOVED CV::CAPTURE AND JUST USED THE ZED GETVIEW FUNCTION USED EARLIER
+	waitKey(1000);
+	
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+    // Loop until 'q' is pressed  ----- COMBINED BOTH CV AND ZED LOOPS INTO ONE
     while (key != 'q') {
         // Disparity Map filtering
         zed->setConfidenceThreshold(confidenceThres);
@@ -517,15 +456,19 @@ if (argc > 3) {
             // Disparity, depth, confidence are 32F buffer by default and 8UC4 buffer in normalized format (displayable grayscale)
 
 
-            // -- The next part is about displaying the data --
+            // -- The next part is about displaying the data --------------------------------------DISPLAY
 
             // Normalize the disparity / depth map in order to use the full color range of gray level image
-            if (displayDisp)
+			//ADDED _GPU TO ALL RETRIEVES, MAKES IT USE THE GPU BUFFER? IF IT DOES NOT MAKE IT FASTER, 
+			//JUST REMOVE ALL INSTANCES OF _GPU
+            
+	    if (displayDisp)
                 slMat2cvMat(zed->normalizeMeasure(sl::zed::MEASURE::DISPARITY)).copyTo(disp);
             else
                 slMat2cvMat(zed->normalizeMeasure(sl::zed::MEASURE::DEPTH)).copyTo(disp);
 
-            // To get the depth at a given position, click on the disparity / depth map image
+
+	    // To get the depth at a given position, click on the disparity / depth map image
             cv::resize(disp, dispDisplay, displaySize);
             imshow(mouseStruct.name, dispDisplay);
 
@@ -535,17 +478,20 @@ if (argc > 3) {
                 imshow("confidence", confidencemapDisplay);
             }
 
-            // 'viewID' can be 'SIDE mode' or 'VIEW mode'
-            if (viewID >= sl::zed::LEFT && viewID < sl::zed::LAST_SIDE)
-                slMat2cvMat(zed->retrieveImage(static_cast<sl::zed::SIDE> (viewID))).copyTo(anaglyph);
-            else
-                slMat2cvMat(zed->getView(static_cast<sl::zed::VIEW_MODE> (viewID - (int) sl::zed::LAST_SIDE))).copyTo(anaglyph);
-
+		 // 'viewID' can be 'SIDE mode' or 'VIEW mode' - THIS DECIDES WHICH TYPE OF REGULAR VIEW TO USE 		 //BASED ON CASE STATEMENTS BELOW , CALLS THE WINDOW AS ANAGLYPH BUT MAY NOT BE
+            
+		if (viewID >= sl::zed::LEFT && viewID < sl::zed::LAST_SIDE) {
+              //Not sure difference between retrieveImage and getView 
+			slMat2cvMat(zed->retrieveImage(static_cast<sl::zed::SIDE> (viewID))).copyTo(anaglyph);	            	
+		}else {
+		//Zed->getView gets the image, copies to anaglyph matrix then converts matrix to cv::Mat to be used in imshow
+	               	slMat2cvMat(zed->getView(static_cast<sl::zed::VIEW_MODE> (viewID - (int) sl::zed::LAST_SIDE))).copyTo(anaglyph);
+		}
             cv::resize(anaglyph, anaglyphDisplay, displaySize);
-            imshow("VIEW", anaglyphDisplay);
+            //imshow("VIEW", anaglyphDisplay); --REMOVED THIS WINDOW SINCE ITS THE SAME AS THE TRACKING ONE
 
             key = cv::waitKey(5);
-
+//--------------------------------------------------------------------------------------------------DISPLAY
             // Keyboard shortcuts
             switch (key) {
                 case 'b':
@@ -570,18 +516,10 @@ if (argc > 3) {
                     viewID = 10;
                     std::cout << "Current View switched to Side by Side mode" << std::endl;
                     break;
-                case '3': // Overlay
-                    viewID = 11;
-                    std::cout << "Current View switched to Overlay mode" << std::endl;
-                    break;
-                case '4': // Difference
-                    viewID = 9;
-                    std::cout << "Current View switched to Difference mode" << std::endl;
-                    break;
-                case '5': // Anaglyph
-                    viewID = 8;
-                    std::cout << "Current View switched to Anaglyph mode" << std::endl;
-                    break;
+					// Overlay -REMOVED
+                    // Difference -REMOVED
+                    // Anaglyph -REMOVED
+            
                 case 'c':
                     displayConfidenceMap = !displayConfidenceMap;
                     break;
@@ -594,7 +532,82 @@ if (argc > 3) {
                     break;
             }
         } else key = cv::waitKey(5);
-    }
+ 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+		//store image to matrix  -- CHANGED TO MAKE THE ZED GETVIEW AND CONVERT TO CV::MAT THEN COPY INTO anaglyph
+		src = anaglyph;
+
+  		if( !src.data )
+  		{ return -1; }
+
+		//convert frame from BGR to HSV colorspace
+		cvtColor(anaglyph,HSV,COLOR_BGR2HSV);
+
+		if(calibrationMode==true){
+
+		//need to find the appropriate color range values
+		// calibrationMode must be false
+
+		//if in calibration mode, we track objects based on the HSV slider values.
+			cvtColor(anaglyph,HSV,COLOR_BGR2HSV);
+			inRange(HSV,Scalar(H_MIN,S_MIN,V_MIN),Scalar(H_MAX,S_MAX,V_MAX),threshold);
+			morphOps(threshold);
+			imshow(windowName2,threshold);
+
+		//the folowing for canny edge detec
+			/// Create a matrix of the same type and size as src (for dst)
+	  		dst.create( src.size(), src.type() );
+	  		/// Convert the image to grayscale
+	  		cvtColor( src, src_gray, CV_BGR2GRAY );
+	  		/// Create a window
+	  		namedWindow( window_name, CV_WINDOW_AUTOSIZE );
+	  		/// Create a Trackbar for user to enter threshold
+	  		createTrackbar( "Min Threshold:", window_name, &lowThreshold, max_lowThreshold);
+	  		/// Show the image
+			trackFilteredObject(threshold,HSV,anaglyph,(void*) &mouseStruct);
+		}
+		else{
+			//create some temp fruit objects so that
+			//we can use their member functions/information
+			Object blue("blue"), yellow("yellow"), red("red"), green("green");
+
+			//first find blue objects
+			cvtColor(anaglyph,HSV,COLOR_BGR2HSV);
+			inRange(HSV,blue.getHSVmin(),blue.getHSVmax(),threshold);
+			morphOps(threshold);
+			trackFilteredObject(blue,threshold,HSV,anaglyph);
+			//then yellows
+			cvtColor(anaglyph,HSV,COLOR_BGR2HSV);
+			inRange(HSV,yellow.getHSVmin(),yellow.getHSVmax(),threshold);
+			morphOps(threshold);
+			trackFilteredObject(yellow,threshold,HSV,anaglyph);
+			//then reds
+			cvtColor(anaglyph,HSV,COLOR_BGR2HSV);
+			inRange(HSV,red.getHSVmin(),red.getHSVmax(),threshold);
+			morphOps(threshold);
+			trackFilteredObject(red,threshold,HSV,anaglyph);
+			//then greens
+			cvtColor(anaglyph,HSV,COLOR_BGR2HSV);
+			inRange(HSV,green.getHSVmin(),green.getHSVmax(),threshold);
+			morphOps(threshold);
+			trackFilteredObject(green,threshold,HSV,anaglyph);
+
+		}
+		//show frames
+		//imshow(windowName2,threshold);
+
+		imshow(windowName,anaglyph);
+		//imshow(windowName1,HSV);
+
+		//delay 30ms so that screen can refresh.
+		//image will not appear without this waitKey() command
+		waitKey(30);
+	}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     delete zed;
     return 0;

@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/ubuntu/Downloads/zed-colortrackingtest/src/Object.cpp" "/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/ZED_with_OpenCV.dir/src/Object.o"
-  "/home/ubuntu/Downloads/zed-colortrackingtest/src/main.cpp" "/home/ubuntu/Downloads/zed-colortrackingtest/build/CMakeFiles/ZED_with_OpenCV.dir/src/main.o"
+  "/home/ubuntu/RamsBot/zed-colortrackingtest/src/Object.cpp" "/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/ZED_with_OpenCV.dir/src/Object.o"
+  "/home/ubuntu/RamsBot/zed-colortrackingtest/src/main.cpp" "/home/ubuntu/RamsBot/zed-colortrackingtest/build/CMakeFiles/ZED_with_OpenCV.dir/src/main.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
