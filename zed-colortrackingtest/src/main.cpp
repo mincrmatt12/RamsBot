@@ -92,17 +92,17 @@ static void onMouseCallback(int32_t event, int32_t x, int32_t y, int32_t flag, v
 
 //initial min and max HSV filter values.
 //these will be changed using trackbars
-int H_MIN = 0;
-int H_MAX = 256;
-int S_MIN = 0;
+int H_MIN = 23;
+int H_MAX = 74;
+int S_MIN = 157;
 int S_MAX = 256;
-int V_MIN = 0;
+int V_MIN = 65;
 int V_MAX = 256;
 //default capture width and height
 const int FRAME_WIDTH = 720;
 const int FRAME_HEIGHT = 404;
 //max number of objects to be detected in frame
-const int MAX_NUM_OBJECTS=50;
+const int MAX_NUM_OBJECTS=10;
 //minimum and maximum object area
 const int MIN_OBJECT_AREA = 20*20;
 const int MAX_OBJECT_AREA = FRAME_HEIGHT*FRAME_WIDTH/1.5;
@@ -139,11 +139,9 @@ string intToString(int number){
 string floatToString(float number){
 
 	std::stringstream ss;
-	ss << fixed << setprecision(2) << number;
+	ss << number;
 	return ss.str();
 }
-
-
 
 void createTrackbars(){
 	//create window for trackbars
@@ -179,18 +177,16 @@ void drawObject(vector<Object> theObjects,Mat &frame, Mat &temp, vector< vector<
 	}
 }
 
-void drawObject(vector<Object> theObjects,Mat &frame, void * param){
+void drawObject(vector<Object> theObjects,Mat &frame, mouseOCVStruct* dep_data){
 
-	mouseOCVStruct* data = (mouseOCVStruct*) param;
-
-        
+	//mouseOCVStruct* dep_data = (mouseOCVStruct*) param4;
 
 	for(int i =0; i<theObjects.size(); i++){
 
-	int y_int = ((theObjects.at(i).getYPos()) * data->_image.height / data->_resize.height);
-        int x_int = ((theObjects.at(i).getXPos()) * data->_image.width / data->_resize.width);
+	int y_int = ((theObjects.at(i).getYPos()));
+        int x_int = ((theObjects.at(i).getXPos()));
 
-        float* ptr_image_num = (float*) ((int8_t*) data->data + y_int * data->step);
+        float* ptr_image_num = (float*) ((int8_t*) dep_data->data + y_int * dep_data->step);
         float dist = ptr_image_num[x_int];
 
 	cv::circle(frame,cv::Point(theObjects.at(i).getXPos(),theObjects.at(i).getYPos()),10,cv::Scalar(0,0,255));
@@ -213,9 +209,10 @@ void morphOps(Mat &thresh){
 	dilate(thresh,thresh,dilateElement);
 	dilate(thresh,thresh,dilateElement);
 }
-void trackFilteredObject(Mat threshold,Mat HSV, Mat &anaglyph, void * param)
+void trackFilteredObject(Mat threshold,Mat HSV, Mat &anaglyph, void *param2)
 {
 	vector <Object> objects;
+	mouseOCVStruct* param3 = (mouseOCVStruct*) param2;
 	Mat temp;
 	threshold.copyTo(temp);
 	//these two vectors needed for output of findContours
@@ -257,7 +254,9 @@ void trackFilteredObject(Mat threshold,Mat HSV, Mat &anaglyph, void * param)
 			if(objectFound ==true)
 			{
 				//draw object location on screen
-				drawObject(objects,anaglyph,&param);
+
+
+				drawObject(objects,anaglyph,param3);
 			}
 		}
 		else putText(anaglyph,"TOO MUCH NOISE! ADJUST FILTER",Point(0,50),1,2,Scalar(0,0,255),2);
@@ -376,7 +375,7 @@ if (argc > 3) {
     cv::Mat anaglyphDisplay(displaySize, CV_8UC4);
     cv::Mat confidencemapDisplay(displaySize, CV_8UC4);
 
-    sl::zed::SENSING_MODE dm_type = sl::zed::STANDARD;
+    sl::zed::SENSING_MODE dm_type = sl::zed::FILL;
 
     // Mouse callback initialization
     sl::zed::Mat depth;
@@ -596,7 +595,7 @@ if (argc > 3) {
 		}
 		//show frames
 		//imshow(windowName2,threshold);
-
+		cv::resize(anaglyph, anaglyphDisplay, displaySize);
 		imshow(windowName,anaglyph);
 		//imshow(windowName1,HSV);
 
